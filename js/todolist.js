@@ -3,18 +3,27 @@ const todoInput = todoForm.querySelector("input");
 const todoList = document.getElementById("todo-list");
 let todos = [];
 
-function saveTodos(newTodo) {
-    todos.push(newTodo);
+function deleteTodo(event) {
+    const li = event.target.parentElement;
+    li.remove();
+
+    todos = todos.filter((todo) => todo.id !== parseInt(li.id));
+    saveTodos();
+}
+
+function saveTodos() {
     localStorage.setItem("todos", JSON.stringify(todos));
 }
 
-function paintTodo(newTodo) {
+function paintTodo(newTodoObj) {
     const li = document.createElement("li");
+    li.id = newTodoObj.id;
     const span = document.createElement("span");
-    span.innerText = newTodo;
+    span.innerText = newTodoObj.todo;
     const input = document.createElement("input");
     input.setAttribute("type", "checkbox");
     const button = document.createElement("button");
+    button.addEventListener("click", deleteTodo);
     button.innerText = "❌";
     li.appendChild(input);
     li.appendChild(span);
@@ -24,9 +33,13 @@ function paintTodo(newTodo) {
 
 function handleTodoSubmit (event) {
     event.preventDefault();
-    const newTodo = todoInput.value;
-    paintTodo(newTodo);
-    saveTodos(newTodo);
+    const newTodoObj = {
+        id : Date.now(),
+        todo : todoInput.value
+    }
+    paintTodo(newTodoObj);
+    todos.push(newTodoObj);
+    saveTodos();
     todoInput.value = "";
 }
 
