@@ -3,6 +3,17 @@ const todoInput = todoForm.querySelector("input");
 const todoList = document.getElementById("todo-list");
 let todos = [];
 
+function handleChkbox (event) {
+    // 체크박스 상태값 수정 및 저장
+    const li = event.target.parentElement;
+    todos.forEach((todo) => {
+        if (todo.id === parseInt(li.id)) {
+            todo.checked = event.target.checked;
+        }
+    });
+    saveTodos();
+}
+
 function deleteTodo(event) {
     const li = event.target.parentElement;
     li.remove();
@@ -22,6 +33,10 @@ function paintTodo(newTodoObj) {
     span.innerText = newTodoObj.todo;
     const input = document.createElement("input");
     input.setAttribute("type", "checkbox");
+    input.addEventListener("click", handleChkbox);
+    if(newTodoObj.checked) {
+        input.setAttribute("checked", newTodoObj.checked);
+    }
     const button = document.createElement("button");
     button.addEventListener("click", deleteTodo);
     button.innerText = "❌";
@@ -35,14 +50,14 @@ function handleTodoSubmit (event) {
     event.preventDefault();
     const newTodoObj = {
         id : Date.now(),
-        todo : todoInput.value
+        todo : todoInput.value,
+        checked : false
     }
     paintTodo(newTodoObj);
     todos.push(newTodoObj);
     saveTodos();
     todoInput.value = "";
 }
-
 
 // 페이지 처음 로드할 때, 로컬스토리지에 저장된 todos 불러와서 보여주기
 const savedTodos = localStorage.getItem("todos");
