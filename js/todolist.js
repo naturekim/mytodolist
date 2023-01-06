@@ -1,10 +1,17 @@
+const progressBar = document.getElementById("progress-bar");
 const todoForm = document.getElementById("todo-form");
 const todoInput = todoForm.querySelector("input");
 const todoList = document.getElementById("todo-list");
 let todos = [];
 
+function paintProgressBar() {
+    const checkedTodos = document.querySelectorAll("input[type=checkbox]:checked")
+    if(checkedTodos) {
+        progressBar.value = checkedTodos.length / todos.length * 100;
+    }
+}
+
 function handleChkbox (event) {
-    // 체크박스 상태값 수정 및 저장
     const li = event.target.parentElement;
     todos.forEach((todo) => {
         if (todo.id === parseInt(li.id)) {
@@ -12,14 +19,15 @@ function handleChkbox (event) {
         }
     });
     saveTodos();
+    paintProgressBar();
 }
 
 function deleteTodo(event) {
     const li = event.target.parentElement;
     li.remove();
-
     todos = todos.filter((todo) => todo.id !== parseInt(li.id));
     saveTodos();
+    paintProgressBar();
 }
 
 function saveTodos() {
@@ -56,6 +64,7 @@ function handleTodoSubmit (event) {
     paintTodo(newTodoObj);
     todos.push(newTodoObj);
     saveTodos();
+    paintProgressBar();
     todoInput.value = "";
 }
 
@@ -66,5 +75,6 @@ if(savedTodos) {
     todos = parsedTodos;
     todos.forEach(paintTodo);
 }
+paintProgressBar();
 
 todoForm.addEventListener("submit", handleTodoSubmit);
