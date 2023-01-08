@@ -1,8 +1,27 @@
+const feedbackForm = document.getElementById("feedback-form");
+const feedbackInput = feedbackForm.querySelector("input");
+const feedback = feedbackForm.querySelector("p");
 const progressBar = document.getElementById("progress-bar");
 const todoForm = document.getElementById("todo-form");
 const todoInput = todoForm.querySelector("input");
 const todoList = document.getElementById("todo-list");
 let todos = [];
+
+function saveFeedback(feedbackText) {
+    localStorage.setItem("feedback", feedbackText);
+}
+
+function paintFeedback(feedbackText) {
+    feedback.innerText = feedbackText;
+}
+
+function handleFeedbackSubmit() {
+    event.preventDefault();
+    const feedbackText = feedbackInput.value;
+    feedbackInput.value = "";
+    paintFeedback(feedbackText);
+    saveFeedback(feedbackText);
+}
 
 function paintProgressBar() {
     const checkedTodos = document.querySelectorAll("input[type=checkbox]:checked")
@@ -75,6 +94,14 @@ if(savedTodos) {
     todos = parsedTodos;
     todos.forEach(paintTodo);
 }
+
 paintProgressBar();
 
+const savedFeedback = localStorage.getItem("feedback");
+if(savedFeedback) {
+    const feedbackText = savedFeedback;
+    paintFeedback(feedbackText);
+}
+
 todoForm.addEventListener("submit", handleTodoSubmit);
+feedbackForm.addEventListener("submit", handleFeedbackSubmit);

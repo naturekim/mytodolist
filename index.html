@@ -21,15 +21,18 @@
         <button>+</button>
         <div>
             <form id="todo-form">
-                <input type="text" id="todoInput" required/>
+                <input type="text" required/>
                 <button id="addTodoBtn" type="submit">추가</button>
             </form>
         </div>
       </section>
     <div>
-        <p>오늘의 피드백</p>
-        <input type="text" name="" id="feedbackInput">
-        <button id="addFeedbackBtn" type="submit">추가</button>
+        <h5>오늘의 피드백</h5>
+        <form id="feedback-form">
+          <p id="feedback"></p>
+          <input type="text">
+          <button id="addFeedbackBtn" type="submit">추가</button>
+        </form>
     </div>
     </div>
     <script src="js/todolist.js"></script>
