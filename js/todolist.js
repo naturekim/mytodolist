@@ -19,6 +19,8 @@ const feedbackFormGroup = document.getElementById("feedback-form-group");
 const progressGroup = document.getElementById("progress-num-bar");
 const progressText = progressGroup.querySelector("label");
 const progressBar = document.getElementById("progress-bar" );
+const checkedCount = document.getElementById("checked-count" );
+const todosCount = document.getElementById("todos-count" );
 
 const TITLE = "title";
 const TODOS = "todos";
@@ -72,12 +74,17 @@ function paintFeedback(feedbackText) {
 // Progress Bar
 function paintProgressBar() {
     const checkedTodos = document.querySelectorAll("input[type=checkbox]:checked")
-    if (checkedTodos.length === 0 || todos.length === 0) {
-        // Todo를 추가했다가 모두 삭제하는 경우 예외처리
+    const checkedTodosLength = checkedTodos.length;
+    const todosLength = todos.length;
+    
+    // Todo를 추가했다가 모두 삭제하는 경우 예외처리
+    if (todosLength === 0 || checkedTodosLength === 0) {
         progressBar.value = 0;
         progressText.innerText = `0%`;
     } else {
-        const ratio = Math.round(checkedTodos.length / todos.length * 100);
+        checkedCount.innerText = checkedTodosLength;
+        todosCount.innerText = todosLength;
+        const ratio = Math.round(checkedTodosLength / todosLength * 100);
         progressBar.value = ratio;
         progressText.innerText = `${ratio}%`;
     }
