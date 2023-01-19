@@ -198,6 +198,7 @@ input[type="checkbox"] + label::before {
   border: 1px solid var(--dark-navy-color);
   vertical-align:middle;
   margin-right: 10px;
+  transition: all .1s;
 }
 input[type="checkbox"]:checked + label::before {
   content: "✔";
@@ -218,6 +219,10 @@ input[type="checkbox"]:checked + label::before {
 #todo-form ul li {
   padding-top: 4px;
   padding-bottom: 4px;
+}
+.disabled-text {
+  text-decoration: line-through;
+  color: var(--gray-color);
 }
 
 /* === Feedback Style === */

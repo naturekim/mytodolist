@@ -120,6 +120,11 @@ function handleChkbox (event) {
         }
     });
     saveTodos();
+    if(checkbox.checked === true) {
+        li.classList.add("disabled-text");
+    } else {
+        li.classList.remove("disabled-text");
+    }
     paintProgressBar();
 }
 
@@ -147,6 +152,7 @@ function paintTodo(newTodoObj) {
     input.setAttribute("type", "checkbox");
     if(newTodoObj.checked) {
         input.setAttribute("checked", newTodoObj.checked);
+        li.classList.add("disabled-text");
     }
     input.addEventListener("click", handleChkbox);
 
