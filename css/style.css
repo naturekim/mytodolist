@@ -1,0 +1,233 @@
+:root {
+    /* Color */
+    --white-color: #fff;
+    --navy-color: #405189;
+    --dark-navy-color: rgb(54,69,116);
+    --green-color: #0ab39c;
+    --green-light-color: #e6f7f5;
+    --blue-color: #299cdb;
+    --yellow-color: #0ab39c;
+    --orange-color: #f06548;
+    --orange-light-color: #fdefec;
+    --gray-color: #978a99;
+    --grey-light-color: #eff2f7;
+    --shadow-color: #e0e2e8;
+
+    /* Font Size */
+    --font-xlarge: 23px;
+    --font-large: 18px;
+    --font-medium: 15px;
+    --font-small: 13px;
+    --font-micro: 10px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--grey-light-color);
+  min-height: 100vh;
+}
+
+form {
+  margin: 0;
+}
+
+/* === Size === */
+.px-2 {
+  padding-left: 7%;
+  padding-right: 7%;
+}
+.py-1 {
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+.mb-1 {
+  margin-bottom: 3%;
+}
+.mb-2 {
+  margin-bottom: 7%;
+}
+.ml-1 {
+  margin-left: 3%;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.container2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 45%;
+  /* height: 50%; */
+  background-color: var(--white-color);
+  box-shadow: 1px 1px 7px var(--shadow-color);
+}
+
+/* =========== Button Style */
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 10px;
+  border-radius: 5px;
+}
+.btn-primary {
+  background-color: var(--navy-color);
+  color: var(--white-color);
+}
+.btn-primary:hover {
+  background-color: var(--dark-navy-color);
+  color: var(--white-color);
+}
+.btn-outline-primary {
+  color: var(--dark-navy-color);
+  border: 1px solid var(--navy-color);
+}
+.btn-outline-primary:hover {
+  background-color: var(--navy-color);
+  color: var(--white-color);
+}
+.btn-delete {
+  margin-left: 8px;
+  padding: 4px 8px;
+}
+.btn-delete:hover {
+  background: var(--orange-light-color);
+}
+.btn-delete::before {
+  font-family: "FontAwesome"; 
+  font-weight: 400; 
+  content:"\f00d";
+  color: var(--orange-color);
+}
+
+/* === Form group style === */
+.form-control {
+  flex: 1;
+  border: none;
+  font-size: var(--font-medium);
+  background-color: var(--white-color);
+  color: var(--navy-color);
+}
+.form-control:focus {
+  outline: none; 
+  border: 1px solid var(--navy-color);
+}
+#btn-addon2::before {
+  font-family: "FontAwesome"; 
+  font-weight: 400; 
+  content:"\f00c";
+}
+.form-control,
+#btn-addon2 {
+  border: none;
+  border: 1px solid rgba(147, 128, 108, 0.25);
+  padding: 0.5em 0.75em;
+}
+.form-control:first-child,
+#btn-addon2:first-child {
+  border-radius: 5px 0 0 5px; 
+}
+.form-control:last-child,
+#btn-addon2:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+/* === Title Style === */
+.title {
+  cursor: pointer;
+  text-align: center;
+  font-size: var(--font-xlarge);
+}
+.title h3:hover {
+  background: var(--grey-light-color);
+}
+
+/* Info Style */
+.info {
+  display: flex;
+  justify-content: space-between;
+  color: var(--gray-color);
+  font-size: var(--font-small);
+}
+
+/* === Progress Style === */
+#progress-bar {
+  width: 100%;
+  appearance: none;
+}
+#progress-bar::-webkit-progress-bar {
+  background: var(--grey-light-color);
+  border-radius: 20px;
+  height: 4px;
+}
+#progress-bar::-webkit-progress-value {
+  background: var(--green-color);
+  border-radius: 20px;
+}
+
+/* === Checkbox Style === */
+input[type="checkbox"] {
+  display:none;
+}
+input[type="checkbox"] + label {
+  user-select: none; 
+  cursor: pointer;
+}
+input[type="checkbox"] + label::before {
+  display: inline-block;
+  content: "";
+  width: 15px;
+  height: 15px;
+  border-radius: 2px;
+  border: 1px solid var(--dark-navy-color);
+  vertical-align:middle;
+  margin-right: 10px;
+}
+input[type="checkbox"]:checked + label::before {
+  content: "✔";
+  width: 15px;
+  height: 15px;
+  border-radius: 2px;
+  background: var(--dark-navy-color);
+  color: var(--white-color);
+}
+
+/* === List Style === */
+#todo-list-section {
+  display: flex;
+}
+#todo-list-section>div:first-child {
+  flex:1;
+}
+#todo-form ul li {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+/* === Feedback Style === */
+#feedback-form h5 {
+  font-weight: 600;
+}
+#feedback-form p {
+  cursor: pointer;
+  min-height: 11px;
+}
+#feedback-form p:hover {
+  background: var(--grey-light-color);
+}
