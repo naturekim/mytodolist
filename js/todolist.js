@@ -21,6 +21,7 @@ const progressText = progressGroup.querySelector("label");
 const progressBar = document.getElementById("progress-bar" );
 const checkedCount = document.getElementById("checked-count" );
 const todosCount = document.getElementById("todos-count" );
+const currentDate = document.getElementById("current-date" );
 
 const TITLE = "title";
 const TODOS = "todos";
@@ -76,7 +77,7 @@ function paintProgressBar() {
     const checkedTodos = document.querySelectorAll("input[type=checkbox]:checked")
     const checkedTodosLength = checkedTodos.length;
     const todosLength = todos.length;
-    
+
     // Todo를 추가했다가 모두 삭제하는 경우 예외처리
     if (todosLength === 0 || checkedTodosLength === 0) {
         progressBar.value = 0;
@@ -185,6 +186,16 @@ function handleTodoSubmit (event) {
 }
 
 // 페이지 로드 시 실행
+// Jan 19, 2023 이 형식으로 오늘 날짜 표시
+const date = new Date();
+const options = {
+//   weekday: "long",
+  year: "numeric",
+  day: "numeric",
+  month: "short",
+};
+currentDate.innerText = date.toLocaleDateString("en-us", options);
+
 const savedTitle = localStorage.getItem(TITLE);
 if(savedTitle) {
     paintTitle(savedTitle);
