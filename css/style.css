@@ -1,24 +1,25 @@
 :root {
-    /* Color */
-    --white-color: #fff;
-    --navy-color: #405189;
-    --dark-navy-color: rgb(54,69,116);
-    --green-color: #0ab39c;
-    --green-light-color: #e6f7f5;
-    --blue-color: #299cdb;
-    --yellow-color: #0ab39c;
-    --orange-color: #f06548;
-    --orange-light-color: #fdefec;
-    --gray-color: #978a99;
-    --grey-light-color: #eff2f7;
-    --shadow-color: #e0e2e8;
+  /* Color */
+  --white-color: #fff;
+  --navy-color: #405189;
+  --dark-navy-color: rgb(54, 69, 116);
+  --green-color: #0ab39c;
+  --dark-green-color: #079280;
+  --green-light-color: #e6f7f5;
+  --blue-color: #299cdb;
+  --yellow-color: #0ab39c;
+  --orange-color: #f06548;
+  --orange-light-color: #fdefec;
+  --gray-color: #978a99;
+  --grey-light-color: #eff2f7;
+  --shadow-color: #e0e2e8;
 
-    /* Font Size */
-    --font-xlarge: 23px;
-    --font-large: 18px;
-    --font-medium: 15px;
-    --font-small: 13px;
-    --font-micro: 10px;
+  /* Font Size */
+  --font-xlarge: 23px;
+  --font-large: 18px;
+  --font-medium: 15px;
+  --font-small: 13px;
+  --font-micro: 10px;
 }
 
 * {
@@ -94,6 +95,14 @@ button {
   background-color: var(--dark-navy-color);
   color: var(--white-color);
 }
+.btn-sucess {
+  background-color: var(--green-color);
+  color: var(--white-color);
+}
+.btn-sucess:hover {
+  background-color: var(--dark-green-color);
+  color: var(--white-color);
+}
 .btn-outline-primary {
   color: var(--dark-navy-color);
   border: 1px solid var(--navy-color);
@@ -110,9 +119,9 @@ button {
   background: var(--orange-light-color);
 }
 .btn-delete::before {
-  font-family: "FontAwesome"; 
-  font-weight: 400; 
-  content:"\f00d";
+  font-family: "FontAwesome";
+  font-weight: 400;
+  content: "\f00d";
   color: var(--orange-color);
 }
 
@@ -125,26 +134,26 @@ button {
   color: var(--navy-color);
 }
 .form-control:focus {
-  outline: none; 
+  outline: none;
   border: 1px solid var(--navy-color);
 }
-#btn-addon2::before {
-  font-family: "FontAwesome"; 
-  font-weight: 400; 
-  content:"\f00c";
+.btn-addon::before {
+  font-family: "FontAwesome";
+  font-weight: 400;
+  content: "\f00c";
 }
 .form-control,
-#btn-addon2 {
+.btn-addon {
   border: none;
   border: 1px solid rgba(147, 128, 108, 0.25);
   padding: 0.5em 0.75em;
 }
 .form-control:first-child,
-#btn-addon2:first-child {
-  border-radius: 5px 0 0 5px; 
+.btn-addon:first-child {
+  border-radius: 5px 0 0 5px;
 }
 .form-control:last-child,
-#btn-addon2:last-child {
+.btn-addon:last-child {
   border-radius: 0 5px 5px 0;
 }
 
@@ -158,7 +167,7 @@ button {
   background: var(--grey-light-color);
 }
 
-/* Info Style */
+/* === Info Style === */
 .info {
   display: flex;
   justify-content: space-between;
@@ -183,10 +192,10 @@ button {
 
 /* === Checkbox Style === */
 input[type="checkbox"] {
-  display:none;
+  display: none;
 }
 input[type="checkbox"] + label {
-  user-select: none; 
+  user-select: none;
   cursor: pointer;
 }
 input[type="checkbox"] + label::before {
@@ -196,9 +205,9 @@ input[type="checkbox"] + label::before {
   height: 15px;
   border-radius: 2px;
   border: 1px solid var(--dark-navy-color);
-  vertical-align:middle;
+  vertical-align: middle;
   margin-right: 10px;
-  transition: all .1s;
+  transition: all 0.1s;
 }
 input[type="checkbox"]:checked + label::before {
   content: "✔";
@@ -213,8 +222,8 @@ input[type="checkbox"]:checked + label::before {
 #todo-list-section {
   display: flex;
 }
-#todo-list-section>div:first-child {
-  flex:1;
+#todo-list-section > div:first-child {
+  flex: 1;
 }
 #todo-form ul li {
   padding-top: 4px;

@@ -7,29 +7,33 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/reset.css" />
     <title>My TODO List</title>
-    <script src="https://kit.fontawesome.com/be598d20e9.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/be598d20e9.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body class="container2">
     <section class="card py-1">
-      
       <!-- Title -->
-      <header class="p-7">
-        <div class="title px-2 py-1">
-          <form id="title-form">
-            <h3 class="py-1">TO DO</h3>
-            <div id="title-form-group" class="container hidden">
-              <input type="text" class="form-control" placeholder="Enter title" required/>
-              <button type="submit" class="btn-primary" id="btn-addon2"></button>
-            </div>
-          </form>
-        </div>
+      <header class="title px-2 py-1">
+        <form id="title-form">
+          <h3 class="py-1">TO DO</h3>
+          <div id="title-form-group" class="container hidden">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter title"
+              required
+            />
+            <button type="submit" class="btn-primary btn-addon"></button>
+          </div>
+        </form>
       </header>
-
       <!-- Info -->
       <div class="info px-2 py-1">
         <div>
-            <span><i class="fa-solid fa-calendar-days"></i> </span>
-            <span id="current-date"></span>
+          <span><i class="fa-solid fa-calendar-days"></i> </span>
+          <span id="current-date"></span>
         </div>
         <div>
           <span><i class="fa-regular fa-circle-check"></i> </span>
@@ -38,41 +42,48 @@
           <span id="todos-count">0</span>
         </div>
       </div>
-      
       <!-- Progress bar -->
       <div id="progress-num-bar" class="">
         <progress id="progress-bar" max="100" value="0"></progress>
         <label for="progress-bar" class="hidden">0%</label>
       </div>
-      
       <!-- Check list -->
       <div id="todo-list-section" class="px-2 py-1 mb-1">
         <div>
           <form id="todo-form">
             <div id="todo-form-group" class="container mb-2 hidden">
-              <input type="text" class="form-control" placeholder="Add a new task" required/>
-              <button type="submit" class="btn-primary" id="btn-addon2"></button>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Add a new task"
+                required
+              />
+              <button type="submit" class="btn-primary btn-addon"></button>
             </div>
             <ul></ul>
           </form>
         </div>
         <div class="ml-1">
-          <button id="edit-btn" class="btn-primary"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button id="edit-btn" class="btn-primary">
+            <i class="fa-solid fa-pen-to-square"></i>
+          </button>
         </div>
       </div>
-
       <!-- Feedback -->
       <div class="px-2 py-1">
         <form id="feedback-form">
           <h5 class="mb-1">Feedback</h5>
           <p class="py-1"></p>
           <div id="feedback-form-group" class="container hidden">
-            <input type="text" class="form-control" placeholder="Add a feedback" required/>
-            <button type="submit" class="btn-primary" id="btn-addon2"></button>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Add a feedback"
+            />
+            <button type="submit" class="btn-primary btn-addon"></button>
           </div>
         </form>
       </div>
-
     </section>
     <script src="js/todolist.js"></script>
   </body>
