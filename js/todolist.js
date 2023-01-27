@@ -42,7 +42,7 @@ function handleTitleSubmit(event) {
   event.preventDefault();
   const titleText = titleInput.value;
   paintTitle(titleText);
-  localStorage.setItem("title", titleText);
+  localStorage.setItem(TITLE, titleText);
 }
 
 function paintTitle(titleText) {
@@ -80,13 +80,12 @@ function paintProgressBar() {
   const checkedTodosLength = checkedTodos.length;
   const todosLength = todos.length;
 
-  // Todo를 추가했다가 모두 삭제하는 경우 예외처리
-  if (todosLength === 0 || checkedTodosLength === 0) {
+  checkedCount.innerText = checkedTodosLength;
+  todosCount.innerText = todosLength;
+  if (todosLength === 0) {
     progressBar.value = 0;
-    progressText.innerText = `0%`;
+    progressText.innerText = "0%";
   } else {
-    checkedCount.innerText = checkedTodosLength;
-    todosCount.innerText = todosLength;
     const ratio = Math.round((checkedTodosLength / todosLength) * 100);
     progressBar.value = ratio;
     progressText.innerText = `${ratio}%`;
@@ -95,9 +94,16 @@ function paintProgressBar() {
 
 // Edit Button - Todo Form
 function activeTodoForm(event) {
-  event.preventDefault();
   if (editMode) {
     editMode = false;
+    todoFormGroup.classList.add(HIDDEN);
+    editBtn.classList.add("btn-primary");
+    editBtn.classList.remove("btn-sucess");
+    Array.from(deleteBtns).forEach((btn) => {
+      btn.classList.add(HIDDEN);
+    });
+  } else {
+    editMode = true;
     todoFormGroup.classList.remove(HIDDEN);
     editBtn.classList.remove("btn-primary");
     editBtn.classList.add("btn-sucess");
@@ -105,14 +111,6 @@ function activeTodoForm(event) {
       btn.classList.remove(HIDDEN);
     });
     todoInput.focus();
-  } else {
-    editMode = true;
-    todoFormGroup.classList.add(HIDDEN);
-    editBtn.classList.add("btn-primary");
-    editBtn.classList.remove("btn-sucess");
-    Array.from(deleteBtns).forEach((btn) => {
-      btn.classList.add(HIDDEN);
-    });
   }
 }
 
@@ -188,7 +186,6 @@ function handleTodoSubmit(event) {
     todo: todoInput.value,
     checked: false,
   };
-  editMode = true; //edit모드 유지
   paintTodo(newTodoObj);
   todos.push(newTodoObj);
   saveTodos();
