@@ -1,3 +1,3 @@
 # mytodolist
 
-### 바닐라JS TODO List입니다
+바닐라JS TODO List입니다
